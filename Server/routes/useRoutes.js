@@ -2,15 +2,12 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import expressAsyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
-import { isAuth, isAdmin, generateToken } from '../utils.js';
 
 const userRouter = express.Router();
 
 //Retrieve user details -> Admin
 userRouter.get(
   '/',
-  isAuth,
-
   expressAsyncHandler(async (req, res) => {
     const users = await User.find({});
     res.send(users);
@@ -20,7 +17,6 @@ userRouter.get(
 //For Update User Profile Data
 userRouter.put(
   '/profile',
-  isAuth,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
     if (user) {
@@ -47,8 +43,6 @@ userRouter.put(
 //Retrieve users -> Identifing by userID
 userRouter.get(
   '/:id',
-  isAuth,
-
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
@@ -62,8 +56,6 @@ userRouter.get(
 //Update user details -> Admin
 userRouter.put(
   '/:id',
-  isAuth,
-
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
@@ -81,8 +73,6 @@ userRouter.put(
 //Delete user Details -> Admin
 userRouter.delete(
   '/:id',
-  isAuth,
-
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {

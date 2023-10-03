@@ -1,7 +1,6 @@
 import express from 'express';
 import Product from '../models/productModel.js';
 import expressAsyncHandler from 'express-async-handler';
-import { isAuth, isAdmin } from '../utils.js';
 
 const productRouter = express.Router();
 
@@ -14,8 +13,6 @@ productRouter.get('/', async (req, res) => {
 //Create product ---> Seller
 productRouter.post(
   '/',
-  isAuth,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const newProduct = new Product({
       name: 'sample name ' + Date.now(), //Date is use to create a unique name/slug -> Avoid errors
@@ -38,8 +35,6 @@ productRouter.post(
 //PUT
 productRouter.put(
   '/:id',
-  isAuth,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
@@ -66,8 +61,6 @@ productRouter.put(
 //Delete Product ------> Seller
 productRouter.delete(
   '/:id',
-  isAuth,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
     if (product) {
@@ -85,8 +78,6 @@ const PAGE_SIZE = 6; //default page size
 //Retrive products ---> For seller
 productRouter.get(
   '/admin',
-  isAuth,
-
   expressAsyncHandler(async (req, res) => {
     const { query } = req;
     const page = query.page || 1;
@@ -187,7 +178,6 @@ productRouter.get(
 //For Give Riviews for the products
 productRouter.post(
   '/:id/reviews',
-  isAuth,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);

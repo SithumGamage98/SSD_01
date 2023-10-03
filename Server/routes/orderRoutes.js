@@ -1,10 +1,8 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Order from '../models/orderModel.js';
-import { isAuth } from '../utils.js';
 import User from '../models/userModel.js';
 import Product from '../models/productModel.js';
-import { isAdmin } from '../utils.js';
 import { mailgun, payOrderEmailTemplate } from '../utils.js';
 
 //Create order route
@@ -13,8 +11,6 @@ const orderRouter = express.Router();
 //Retriev orders to the Order list screen -> for Admin
 orderRouter.get(
   '/',
-  isAuth,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const orders = await Order.find().populate('user', 'name');
     res.send(orders);
@@ -24,7 +20,6 @@ orderRouter.get(
 //Add order
 orderRouter.post(
   '/',
-  isAuth, //Is a middleweare function
   expressAsyncHandler(async (req, res) => {
     const newOrder = new Order({
       orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
@@ -45,8 +40,6 @@ orderRouter.post(
 //Delete order -> for Admin
 orderRouter.delete(
   '/:id',
-  isAuth,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
@@ -86,7 +79,6 @@ orderRouter.get(
     //Create Delivery Status -> Admin
     orderRouter.put(
       '/:id/deliver',
-      isAuth,
       expressAsyncHandler(async (req, res) => {
         const order = await Order.findById(req.params.id);
         if (order) {
@@ -136,7 +128,6 @@ orderRouter.get(
 //Retriview order details -> by using ID
 orderRouter.get(
   '/:id',
-  isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id); //using the order ID
     if (order) {
@@ -150,7 +141,6 @@ orderRouter.get(
 //update order data
 orderRouter.put(
   '/:id/pay',
-  isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id).populate(
       'user',
