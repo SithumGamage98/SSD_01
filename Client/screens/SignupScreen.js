@@ -51,10 +51,6 @@ export default function SignupScreen() {
     }
   }, [navigate, redirect, userInfo]);
 
-  //Password
-  const minLength = 6;
-  const maxLength = 12;
-
   return (
     <div>
       <Helmet>
@@ -91,9 +87,7 @@ export default function SignupScreen() {
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="password"
-            maxLength={maxLength}
-            minLength={minLength}
+            type="text"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -102,7 +96,7 @@ export default function SignupScreen() {
         <Form.Group className="mb-3" controlId="confirmPassword">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            type="password"
+            type="text"
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
