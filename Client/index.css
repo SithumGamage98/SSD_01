@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.site-container {
+  min-height: 100vh;
+}
+
+.revonta {
+  color: #04470e;
+}
+
+.nav-link {
+  color: #ffffff;
+}
+.main {
+  flex: 1;
+}
+
+.navbar {
+  color: #070202;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  border: 5px #140d0d solid;
+  margin: 1rem;
+}
+
+/* Product Photos */
+.product img {
+  width: 40%;
+  max-width: 100px;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.rating span {
+  color: #bcb00b;
+}
+
+.btn-primary {
+  background-color: #007618;
+  border: 0;
+}
+
+.btn-primary {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.btn-primary {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+.img-large {
+  max-width: 100%;
+}
+
+.img-thumbnail {
+  height: 80px;
+}
+
+.small-container {
+  max-width: 600px;
+}
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+
+.checkout-steps > div.active {
+  border-bottom: 0.3rem solid #de5211;
+  color: #c7761a;
+}
+
+.small-container {
+  max-width: 600px;
+}
+/* sidebar*/
+.navbar-brand {
+  font-weight: bold;
+}
+.side-navbar {
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: #1a4f2b;
+  transition: 0.5s;
+}
+.site-container {
+  transition: 0.4s;
+}
+
+.active-cont {
+  margin-left: 240px;
+}
+.active-nav {
+  left: 0;
+}
+
+.text-bold {
+  font-weight: bold;
+}
