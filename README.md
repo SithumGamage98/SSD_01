@@ -1,11 +1,5 @@
 # -SSD_01 Project With Vulnerabilities
 
-## Technologies - 
-### MernStack (MongoDb,Express,ReactJS,NodeJs)
-### Redux
-### HTML,CSS,Bootstrap
-### Docker,Kubernetes
-
 ## Testing Tools
 ### The potential vulnerabilities that are described have been identified by using the “snyk” 
 ### and ”SonarCloud” testing tools
